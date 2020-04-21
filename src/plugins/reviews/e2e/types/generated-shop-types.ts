@@ -87,6 +87,7 @@ export type Asset = Node & {
   height: Scalars['Int'],
   source: Scalars['String'],
   preview: Scalars['String'],
+  focalPoint?: Maybe<Coordinate>,
 };
 
 export type AssetList = PaginatedList & {
@@ -107,6 +108,8 @@ export type BooleanCustomFieldConfig = CustomField & {
   type: Scalars['String'],
   label?: Maybe<Array<LocalizedString>>,
   description?: Maybe<Array<LocalizedString>>,
+  readonly?: Maybe<Scalars['Boolean']>,
+  internal?: Maybe<Scalars['Boolean']>,
 };
 
 export type BooleanOperators = {
@@ -248,6 +251,12 @@ export type ConfigurableOperationDefinition = {
 export type ConfigurableOperationInput = {
   code: Scalars['String'],
   arguments: Array<ConfigArgInput>,
+};
+
+export type Coordinate = {
+   __typename?: 'Coordinate',
+  x: Scalars['Float'],
+  y: Scalars['Float'],
 };
 
 export type Country = Node & {
@@ -679,6 +688,8 @@ export type CustomField = {
   type: Scalars['String'],
   label?: Maybe<Array<LocalizedString>>,
   description?: Maybe<Array<LocalizedString>>,
+  readonly?: Maybe<Scalars['Boolean']>,
+  internal?: Maybe<Scalars['Boolean']>,
 };
 
 export type CustomFieldConfig = StringCustomFieldConfig | LocaleStringCustomFieldConfig | IntCustomFieldConfig | FloatCustomFieldConfig | BooleanCustomFieldConfig | DateTimeCustomFieldConfig;
@@ -723,6 +734,8 @@ export type DateTimeCustomFieldConfig = CustomField & {
   type: Scalars['String'],
   label?: Maybe<Array<LocalizedString>>,
   description?: Maybe<Array<LocalizedString>>,
+  readonly?: Maybe<Scalars['Boolean']>,
+  internal?: Maybe<Scalars['Boolean']>,
   min?: Maybe<Scalars['String']>,
   max?: Maybe<Scalars['String']>,
   step?: Maybe<Scalars['Int']>,
@@ -807,6 +820,8 @@ export type FloatCustomFieldConfig = CustomField & {
   type: Scalars['String'],
   label?: Maybe<Array<LocalizedString>>,
   description?: Maybe<Array<LocalizedString>>,
+  readonly?: Maybe<Scalars['Boolean']>,
+  internal?: Maybe<Scalars['Boolean']>,
   min?: Maybe<Scalars['Float']>,
   max?: Maybe<Scalars['Float']>,
   step?: Maybe<Scalars['Float']>,
@@ -894,6 +909,8 @@ export type IntCustomFieldConfig = CustomField & {
   type: Scalars['String'],
   label?: Maybe<Array<LocalizedString>>,
   description?: Maybe<Array<LocalizedString>>,
+  readonly?: Maybe<Scalars['Boolean']>,
+  internal?: Maybe<Scalars['Boolean']>,
   min?: Maybe<Scalars['Int']>,
   max?: Maybe<Scalars['Int']>,
   step?: Maybe<Scalars['Int']>,
@@ -1283,6 +1300,8 @@ export type LocaleStringCustomFieldConfig = CustomField & {
   type: Scalars['String'],
   label?: Maybe<Array<LocalizedString>>,
   description?: Maybe<Array<LocalizedString>>,
+  readonly?: Maybe<Scalars['Boolean']>,
+  internal?: Maybe<Scalars['Boolean']>,
   pattern?: Maybe<Scalars['String']>,
 };
 
@@ -1842,6 +1861,9 @@ export type ProductReview = Node & {
   summary: Scalars['String'],
   body?: Maybe<Scalars['String']>,
   rating: Scalars['Float'],
+  quality?: Maybe<Scalars['Float']>,
+  pricevalue?: Maybe<Scalars['Float']>,
+  comfort?: Maybe<Scalars['Float']>,
   author?: Maybe<Customer>,
   authorName: Scalars['String'],
   authorLocation?: Maybe<Scalars['String']>,
@@ -1858,6 +1880,9 @@ export type ProductReviewFilterParameter = {
   summary?: Maybe<StringOperators>,
   body?: Maybe<StringOperators>,
   rating?: Maybe<NumberOperators>,
+  quality?: Maybe<NumberOperators>,
+  pricevalue?: Maybe<NumberOperators>,
+  comfort?: Maybe<NumberOperators>,
   authorName?: Maybe<StringOperators>,
   authorLocation?: Maybe<StringOperators>,
   upvotes?: Maybe<NumberOperators>,
@@ -1893,6 +1918,9 @@ export type ProductReviewSortParameter = {
   summary?: Maybe<SortOrder>,
   body?: Maybe<SortOrder>,
   rating?: Maybe<SortOrder>,
+  quality?: Maybe<SortOrder>,
+  pricevalue?: Maybe<SortOrder>,
+  comfort?: Maybe<SortOrder>,
   authorName?: Maybe<SortOrder>,
   authorLocation?: Maybe<SortOrder>,
   upvotes?: Maybe<SortOrder>,
@@ -2168,9 +2196,11 @@ export type SearchResult = {
   productId: Scalars['ID'],
   productName: Scalars['String'],
   productPreview: Scalars['String'],
+  productAsset?: Maybe<SearchResultAsset>,
   productVariantId: Scalars['ID'],
   productVariantName: Scalars['String'],
   productVariantPreview: Scalars['String'],
+  productVariantAsset?: Maybe<SearchResultAsset>,
   price: SearchResultPrice,
   priceWithTax: SearchResultPrice,
   currencyCode: CurrencyCode,
@@ -2181,6 +2211,13 @@ export type SearchResult = {
   collectionIds: Array<Scalars['ID']>,
   /** A relevence score for the result. Differs between database implementations */
   score: Scalars['Float'],
+};
+
+export type SearchResultAsset = {
+   __typename?: 'SearchResultAsset',
+  id: Scalars['ID'],
+  preview: Scalars['String'],
+  focalPoint?: Maybe<Coordinate>,
 };
 
 /** The price of a search result product, either as a range or as a single price */
@@ -2274,6 +2311,8 @@ export type StringCustomFieldConfig = CustomField & {
   length?: Maybe<Scalars['Int']>,
   label?: Maybe<Array<LocalizedString>>,
   description?: Maybe<Array<LocalizedString>>,
+  readonly?: Maybe<Scalars['Boolean']>,
+  internal?: Maybe<Scalars['Boolean']>,
   pattern?: Maybe<Scalars['String']>,
   options?: Maybe<Array<StringFieldOption>>,
 };
@@ -2296,6 +2335,9 @@ export type SubmitProductReviewInput = {
   summary: Scalars['String'],
   body: Scalars['String'],
   rating: Scalars['Float'],
+  quality?: Maybe<Scalars['Float']>,
+  pricevalue?: Maybe<Scalars['Float']>,
+  comfort?: Maybe<Scalars['Float']>,
   authorName: Scalars['String'],
   authorLocation?: Maybe<Scalars['String']>,
 };
@@ -2315,7 +2357,7 @@ export type TaxRate = Node & {
   updatedAt: Scalars['DateTime'],
   name: Scalars['String'],
   enabled: Scalars['Boolean'],
-  value: Scalars['Int'],
+  value: Scalars['Float'],
   category: TaxCategory,
   zone: Zone,
   customerGroup?: Maybe<CustomerGroup>,
@@ -2388,6 +2430,6 @@ export type SubmitProductReviewMutation = (
   { __typename?: 'Mutation' }
   & { submitProductReview: (
     { __typename?: 'ProductReview' }
-    & Pick<ProductReview, 'authorLocation' | 'authorName' | 'body' | 'createdAt' | 'downvotes' | 'id' | 'rating' | 'response' | 'responseCreatedAt' | 'state' | 'summary' | 'updatedAt' | 'upvotes'>
+    & Pick<ProductReview, 'authorLocation' | 'authorName' | 'body' | 'createdAt' | 'downvotes' | 'id' | 'rating' | 'quality' | 'pricevalue' | 'comfort' | 'response' | 'responseCreatedAt' | 'state' | 'summary' | 'updatedAt' | 'upvotes'>
   ) }
 );

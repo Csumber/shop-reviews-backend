@@ -25,6 +25,15 @@ export class ProductReview extends VendureEntity {
     @Column()
     rating: number;
 
+    @Column({ default: 3 })
+    quality: number;
+
+    @Column({ default: 3 })
+    pricevalue: number;
+
+    @Column({ default: 3 })
+    comfort: number;
+
     @ManyToOne(type => Customer)
     author: Customer;
 

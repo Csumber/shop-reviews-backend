@@ -10,6 +10,9 @@ export const SUBMIT_PRODUCT_REVIEW = gql`
             downvotes
             id
             rating
+            quality
+            pricevalue
+            comfort
             response
             responseCreatedAt
             state

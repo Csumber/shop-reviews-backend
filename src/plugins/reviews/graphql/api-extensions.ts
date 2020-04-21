@@ -10,6 +10,9 @@ export const commonApiExtensions = gql`
         summary: String!
         body: String
         rating: Float!
+        quality: Float!
+        pricevalue: Float!
+        comfort: Float!
         author: Customer
         authorName: String!
         authorLocation: String
@@ -71,6 +74,9 @@ export const shopApiExtensions = gql`
         summary: String!
         body: String!
         rating: Float!
+        quality: Float!
+        pricevalue: Float!
+        comfort: Float!
         authorName: String!
         authorLocation: String
     }
