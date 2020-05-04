@@ -22,6 +22,9 @@ mutation {
     summary: "Good tablet"
     body: "The screen is clear, bright and sharp!"
     rating: 5
+    quality: 5
+    pricevalue: 5
+    comfort: 5
     authorName: "Joe Smith"
     authorLocation: "London"
   }) {

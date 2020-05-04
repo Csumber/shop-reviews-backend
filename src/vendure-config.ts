@@ -5,9 +5,7 @@ import { AdminUiPlugin } from '@vendure/admin-ui-plugin';
 import path from 'path';
 import fs from 'fs';
 
-import { BraintreePlugin } from './plugins/braintree/braintree-plugin';
 import { ReviewsPlugin } from './plugins/reviews/reviews-plugin';
-import { RandomCatPlugin } from './plugins/randomcat/RandomCatPlugin';
 
 export const config: VendureConfig = {
     authOptions: {
@@ -52,9 +50,7 @@ export const config: VendureConfig = {
             port: 3002,
             extensions: [ReviewsPlugin.uiExtensions],
         }),
-        BraintreePlugin,
         ReviewsPlugin,
-        // RandomCatPlugin
     ],
 };
 

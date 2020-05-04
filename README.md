@@ -1,13 +1,15 @@
-# real-world-vendure
+# vendure-shop-review-önlab
 
-This project demonstrates a real-world [Vendure](https://www.vendure.io/) server setup. It was generated with [`@vendure/create`](https://github.com/vendure-ecommerce/vendure/tree/master/packages/create), but adds extra tooling and includes some example real-world plugins.
+This project was created as an assignment to subject [Project laboratory](https://www.aut.bme.hu/en/Education/BScInfo/Onlab) at Budapest University of Technology and Economics. It demonstrates an extended [Vendure](https://www.vendure.io/) server setup. It was generated with [`@vendure/create`](https://github.com/vendure-ecommerce/vendure/tree/master/packages/create), but adds extra tooling and includes some example real-world plugins which also have been modified.
+
+The project also has a [frontend](https://github.com/Csumber/shop-reviews-frontend).
 
 ## Getting Started
 
 1. Clone this repo
 2. `yarn` to install dependencies
 3. `yarn migration:run` to apply the latest changes to the database schema
-3. `yarn start` to run
+4. `yarn start` to run
 
 ## Tooling
 
@@ -25,10 +27,6 @@ This is used to generate TypeScript types based on the Vendure server's GraphQL 
 Whenever a change to the GraphQL API is made either by a plugin schema extension or by the definition of CustomFields, run `yarn generate-types` to update the TypeScript definitions.
 
 ## Plugins
-
-### Braintree Payments Plugin
-
-This is a working implementation for the Braintree payment provider. It demonstrates how a typical `PaymentMethodHandler` is used. The basic pattern will be similar for other modern payment processors such as Stripe or PayPal. See the [Braintree plugin readme](./src/plugins/braintree/README.md) for more information.
 
 ### Reviews Plugin
 
@@ -49,8 +47,7 @@ The plugin showcases several advanced capabilities of the Vendure plugin system.
 yarn start
 ```
 
-will start the Vendure server and [worker](https://www.vendure.io/docs/developer-guide/vendure-worker/) processes from
-the `src` directory. Note - the first time you run this the custom UI extensions of the reviews plugin will be compiled which may take a few minutes. Subsequent runs will be much faster (providing the UI extensions of the reviews plugin do not change).
+will start the Vendure server and [worker](https://www.vendure.io/docs/developer-guide/vendure-worker/) processes from the `src` directory. Note - the first time you run this the custom UI extensions of the reviews plugin will be compiled which may take a few minutes. Subsequent runs will be significantly faster (providing the UI extensions of the reviews plugin do not change).
 
 ## Build
 
