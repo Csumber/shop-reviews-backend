@@ -1,4 +1,4 @@
-# vendure-shop-review-project-laboratory
+# vendure-shop-review-project-laboratory-backend
 
 This project was created as an assignment to subject [Project laboratory](https://www.aut.bme.hu/en/Education/BScInfo/Onlab) at Budapest University of Technology and Economics. It demonstrates an extended [Vendure](https://www.vendure.io/) server setup. It was generated with [`@vendure/create`](https://github.com/vendure-ecommerce/vendure/tree/master/packages/create), but adds extra tooling and includes some example real-world plugins which also have been modified.
 
