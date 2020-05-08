@@ -10,6 +10,7 @@ import { ReviewsPlugin } from './plugins/reviews/reviews-plugin';
 export const config: VendureConfig = {
     authOptions: {
         sessionSecret: 'jysakgzhw6',
+        requireVerification: false,
     },
     port: 3000,
     adminApiPath: 'admin-api',
