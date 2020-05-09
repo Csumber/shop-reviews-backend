@@ -16,11 +16,15 @@ export const config: VendureConfig = {
     adminApiPath: 'admin-api',
     shopApiPath: 'shop-api',
     dbConnectionOptions: {
-        type: 'sqlite',
-        synchronize: true,
+        type: 'mysql',
+        synchronize: true, // turn this off for production
         logging: false,
-        database: path.join(__dirname, '../vendure.sqlite'),
-        migrations: [getMigrationsPath()],
+        database: 'vendure',
+        host: '34.89.214.210',
+        port: 3306,
+        username: 'root',
+        password: 'root',
+        migrations: [path.join(__dirname, '../migrations/*.ts')],
     },
     paymentOptions: {
         paymentMethodHandlers: [examplePaymentHandler],
