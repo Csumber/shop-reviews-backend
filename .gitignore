@@ -4,3 +4,5 @@ static/assets/cache
 static/email/test-emails
 .idea
 yarn-error.log
+
+/package-lock.json
