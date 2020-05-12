@@ -3,13 +3,8 @@ version: 0.1
 phases:
   install:
     commands:
-    # install yarn
-    - apt-get install sudo
-    - curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
-    - echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-    - sudo apt update && sudo apt install yarn
     # install dependencies
-    - yarn
+    - npm install
     
     # update AWS CLI
     - pip install --upgrade awscli
@@ -17,4 +12,4 @@ phases:
 post_build:
     run-as: onlab-backtend
     commands:
-    - yarn start
+    - npm run start
