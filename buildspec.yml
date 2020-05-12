@@ -3,4 +3,13 @@ version: 0.1
 phases:
   install:
     commands:
+    # install dependencies
       - yarn
+      
+    # update AWS CLI
+    - pip install --upgrade awscli
+
+post_build:
+    run-as: onlab-backtend
+    commands:
+    - yarn start
